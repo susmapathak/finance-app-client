@@ -1,42 +1,77 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// ApplicationForm.js
 
-const ApplicationForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    income: '',
-    expenses: '',
-    assets: '',
-    liabilities: ''
-  });
+import React from 'react';
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('/api/applications', formData);
-      alert('Application submitted');
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+const ApplicationForm = ({ formData, handleChange, handleSubmit, isEditing }) => {
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="firstName" value={formData.firstName} onChange={onChange} placeholder="First Name" required />
-      <input type="text" name="lastName" value={formData.lastName} onChange={onChange} placeholder="Last Name" required />
-      <input type="email" name="email" value={formData.email} onChange={onChange} placeholder="Email" required />
-      <input type="text" name="phone" value={formData.phone} onChange={onChange} placeholder="Phone" required />
-      <input type="number" name="income" value={formData.income} onChange={onChange} placeholder="Income" required />
-      <input type="number" name="expenses" value={formData.expenses} onChange={onChange} placeholder="Expenses" required />
-      <input type="number" name="assets" value={formData.assets} onChange={onChange} placeholder="Assets" required />
-      <input type="number" name="liabilities" value={formData.liabilities} onChange={onChange} placeholder="Liabilities" required />
-      <button type="submit">Submit Application</button>
-    </form>
+    <div className="form-container">
+      <h2>{isEditing ? 'Edit Application' : 'Create Application'}</h2>
+      <form onSubmit={handleSubmit} className="application-form">
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="income">Income</label>
+          <input
+            type="number"
+            id="income"
+            name="income"
+            placeholder="Income"
+            value={formData.income}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="expenses">Expenses</label>
+          <input
+            type="number"
+            id="expenses"
+            name="expenses"
+            placeholder="Expenses"
+            value={formData.expenses}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="assets">Assets</label>
+          <input
+            type="number"
+            id="assets"
+            name="assets"
+            placeholder="Assets"
+            value={formData.assets}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="liabilities">Liabilities</label>
+          <input
+            type="number"
+            id="liabilities"
+            name="liabilities"
+            placeholder="Liabilities"
+            value={formData.liabilities}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit" className="submit-button">
+          {isEditing ? 'Update Application' : 'Create Application'}
+        </button>
+      </form>
+    </div>
   );
 };
 
