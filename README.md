@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Asset Finance Management Platform - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React application that connects to an Express.js server for managing user authentication and finance applications. Users can sign up, log in, and perform CRUD operations on their finance applications.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User Registration and Login
+- Create, Read, Update, and Delete (CRUD) finance applications
+- Integration with backend Express.js server
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ensure that you have the following installed on your local machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or later)
+- npm or Yarn (for managing dependencies)
+- Access to the Express.js server (see the server setup instructions below)
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
 
-### `npm run build`
+   Run the following commands in your terminal:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   `git clone <your-repository-url>`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   `cd <repository-directory>`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies:**
 
-### `npm run eject`
+   Run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   `npm install`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   or if you are using Yarn:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   `yarn install`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Environment Setup:**
 
-## Learn More
+   Create a `.env` file in the root of the project directory and add the following environment variable:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   REACT_APP_SERVER_URL=http://localhost:5000/api
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - `REACT_APP_SERVER_URL`: The base URL for the backend API server (update this if your server URL is different).
 
-### Code Splitting
+4. **Start the development server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Run the following command to start the React development server:
 
-### Analyzing the Bundle Size
+   `npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   or if you are using Yarn:
 
-### Making a Progressive Web App
+   `yarn start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   The application will be available at http://localhost:3000.
 
-### Advanced Configuration
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Authentication
 
-### Deployment
+- **Sign Up**: Users can create a new account by providing their name, email, and password.
+- **Log In**: Users can log in with their email and password. A JWT token is stored in local storage for authenticated requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Applications
 
-### `npm run build` fails to minify
+- **Create**: Users can create a new finance application by providing details such as income, expenses, assets, and liabilities.
+- **Read**: Users can view their existing finance applications.
+- **Update**: Users can modify details of their existing finance applications.
+- **Delete**: Users can remove their finance applications.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API Endpoints
+
+The React application connects to the following API endpoints provided by the backend server:
+
+- **Authentication Endpoints**:
+  - `POST /api/auth/register` - Register a new user
+  - `POST /api/auth/login` - Log in an existing user and receive a JWT token
+
+- **Application Endpoints** (Protected):
+  - `POST /api/applications` - Create a new application
+  - `GET /api/applications` - Retrieve all applications for the logged-in user
+  - `PUT /api/applications/:id` - Update an existing application
+  - `DELETE /api/applications/:id` - Delete an application
+
+## Troubleshooting
+
+- **Server Connection Issues**: Ensure that the backend server is running and accessible at the URL specified in `REACT_APP_SERVER_URL`.
+- **JWT Token Issues**: Make sure to handle JWT tokens correctly in your application to maintain authentication.
+
+
