@@ -14,7 +14,7 @@ const Home = () => {
         <div className="home-container">
           <div className="home-content">
             <h1>Welcome to the Asset Finance Platform</h1>
-            <p>Manage your asset finance applications seamlessly.</p>
+            <p>Manage your asset finance applications seamlessly. Site by Susma Pathak</p>
           </div>
         </div>
       </div>
